@@ -72,10 +72,8 @@
         <h2>Search</h2>
       </div>
       <div class="searcherCont mb-3">
-        <input type="search" id="searcher" class="form-control" placeholder="Search by Recipe Name..">
-      </div>
-      <div class="ingSearcherCont">
-        <input type="search" id="ingSearcher" class="form-control" placeholder="Search by Recipe Ingredients..">
+        <label for="recipeSearch"></label>
+        <input name="recipeSearch" type="search" id="searcher" class="form-control" placeholder="Search by Recipe Name..">
       </div>
     </div>
   </section>
@@ -105,7 +103,7 @@
                 <div class="adminCntrls">
                   <button type="button" class="btn btn-outline-dark" id="editRecipe" data-bs-toggle="modal"
                     data-bs-target="#exampleModal">Edit</button>
-                  <button type="button" class="btn btn-outline-dark" id="deleteRecipe">Delete</button>
+                  
                 </div>
 
                 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
@@ -117,7 +115,7 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                       </div>
                       <div class="modal-body">
-                        <form id="recipeForm">
+                        <form id="recipeForm" action="/editRecipe/<%=recipe._id%>" method="POST">
                           <div>
                             <label for="RecipeImg" class="col-form-label">Recipe's image :</label>
                             <input type="file" name="RecipeImg" id="RecipeImg" class="w-100 rounded-2 mt-2"
@@ -149,6 +147,7 @@
                           <div class="modal-footer">
                             <button type="submit" class="btn btn-outline-dark" id="addRecBtn"
                               data-bs-dismiss="modal">Save changes</button>
+                              <button type="button" class="btn btn-outline-dark" onclick="window.location.href='/deleteRecipe/<%=recipe._id%>'">Delete</button>
                           </div>
                         </form>
                       </div>

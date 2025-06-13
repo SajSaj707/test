@@ -27,28 +27,28 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ms-md-auto mb-2 mb-lg-0 align-items-center">
           <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="#home">Home</a>
+            <a class="nav-link" aria-current="page" href="/">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="about">About</a>
+            <a class="nav-link" href="/#about">About</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="services">Services</a>
+            <a class="nav-link" href="/#services">Services</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="recipes">Recipes</a>
+            <a class="nav-link" href="/recipes">Recipes</a>
           </li>
           <li class="nav-item">
             <a class="nav-link active" href="/adminDashboard">Admin</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="contact">Contact</a>
+            <a class="nav-link" href="/#contact">Contact</a>
           </li>
           <li class="nav-item">
             <% if (user) { %>
-              <a class="nav-link" href="profile"><img class="rounded-circle" src="<%=user.img%>" alt="user-img"></a>
+              <a class="nav-link" href="/profile"><img class="rounded-circle" src="<%=user.img%>" alt="user-img"></a>
               <% } else { %>
-                <a class="nav-link" href="signLogin">Sign Up</a>
+                <a class="nav-link" href="/signLogin">Sign Up</a>
                 <% } %>
           </li>
           <%if(user.darkMood){%>
@@ -123,7 +123,8 @@
                     <button type="button" class="btn-close" id="modal-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
                   <div class="modal-body">
-                    <form id="userEditForm">
+                    <form id="userEditForm" action="/editUser" method="POST" enctype="multipart/form-data">
+                      <input type="hidden" name="originalName" value="<%=user.name%>">
                       <div class="Image">
                         <div class="img-box rounded-3 overflow-hidden mb-3">
                           <img src="/images/<%=user.img%>" alt="<%=user.name%> Image" id="userImg">
@@ -147,9 +148,11 @@
                       </div>
 
                       <div class="modal-footer">
-                        <button type="button" class="btn btn-dark" id="delBtn" data-bs-dismiss="modal">Delete</button>
-                        <button type="button" class="btn btn-outline-dark" id="editBtn"
-                          data-bs-dismiss="modal">Update</button>
+                        <form action="/deleteUser" method="POST">
+                          <input type="hidden" name="userName" value="<%=user.name%>">
+                          <button type="submit" class="btn btn-dark">Delete</button>
+                        </form>
+                        <button type="submit" class="btn btn-outline-dark">Update</button>
                       </div>
                     </form>
                   </div>
