@@ -1,0 +1,99 @@
+
+.home{
+    background-image:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(/images/tasty-pizza-near-ingredients.jpg) ;
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+}
+.home h1{
+    font-size: 100px;
+}
+.home p{
+    color: var(--main-c);
+}
+
+
+
+
+.services .mid-service{
+    filter: drop-shadow(1px 1px 15px #000);
+}
+.services .mid-service:hover{
+    animation: shake .4s infinite;
+    position: relative;
+}
+@keyframes shake {
+    0% {
+        transform: rotate(3deg);
+        top: 3px;
+        left: 3px;
+    }
+    33.33334% {
+        transform: rotate(0deg);
+        top: 0px;
+        left: 0px;
+    }
+    66.666667% {
+        transform: rotate(3deg);
+        bottom: 3px;
+        right: 3px;
+    }
+    100% {
+        transform: rotate(0deg);
+        bottom: 0px;
+        right: 0px;
+    }
+}
+.service-modal input,.service-modal textarea{
+    outline: 1px solid #000;
+}
+.service-modal button[type="submit"]:hover{
+    background: var(--main-c);
+}
+.service-modal .btn-primary{
+    background: var(--sec-c);
+    border: 0;
+}
+.recipe-toast .toast-header,.service-modal .modal-header{
+    background: var(--main-c);
+}
+
+
+
+
+.sign_reminder{ 
+    background-image: linear-gradient(var(--bgi-c)), url(/images/10351122_4452317.jpg);
+    background-position: center;
+    background-size: cover;
+}
+.sign_reminder img{
+    width: 250px;
+    aspect-ratio: 1;
+    object-fit: cover;
+    object-position: center;
+}
+
+
+
+.recipes .card .img-box{
+    height: 500px;
+}
+
+
+.contact .icon {
+    border-radius: 50%;
+    aspect-ratio: 1;
+    width: 4rem;
+    transition: .3s;
+}
+.contact .inner:hover .icon {
+    color: white;
+    background: var(--main-c);
+    transition: .3s;
+}
+.contact input,textarea{
+    outline: 1px solid #000;
+}
+.contact .btn.btn-outline-dark:hover {
+    --bs-btn-hover-bg:var(--main-c);
+}

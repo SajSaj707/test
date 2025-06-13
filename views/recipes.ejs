@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="/images/favicon.svg" type="image/x-icon">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playpen+Sans:wght@100..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Shadows+Into+Light&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="/css/all.min.css" />
+  <link rel="stylesheet" href="/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/recipes.css" />
+  <title>MaMa's Spaghetti'</title>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg text-black position-fixed w-100 z-2 " id="navId">
+    <div class="container">
+      <a class="navbar-brand fw-bold text-uppercase" href="#"><img src="/images/logo.png" alt="logo"> MaMa's
+        Spaghetti</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ms-md-auto mb-2 mb-lg-0 align-items-center">
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="/#home">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/#about">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/#services">Services</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="recipes">Recipes</a>
+          </li>
+                              <%if(user.admin){%>
+            <li class="nav-item">
+              <a class="nav-link " href="/adminDashboard">Admin</a>
+            </li>
+            <%}%>
+              <li class="nav-item">
+                <a class="nav-link" href="/#contact">Contact</a>
+              </li>
+              <li class="nav-item">
+                <% if (user) { %>
+                  <a class="nav-link" href="profile"><img class="prf-nav rounded-circle" src="<%=user.img%>"
+                      alt="user-img"></a>
+                  <% } else { %>
+                    <a class="nav-link" href="signLogin">Sign Up</a>
+                    <% } %>
+              </li>
+              <li class="nav-item">
+                <i class="fa-solid fa-moon fa-lg" id="darkModeToggle"></i>
+              </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <section class="recipesTop text-center d-flex align-items-center justify-content-center">
+    <h1>Recipes</h1>
+  </section>
+
+  <section class="search">
+    <div class="container">
+      <div class="top">
+        <h2>Search</h2>
+      </div>
+      <div class="searcherCont mb-3">
+        <input type="search" id="searcher" class="form-control" placeholder="Search by Recipe Name..">
+      </div>
+      <div class="ingSearcherCont">
+        <input type="search" id="ingSearcher" class="form-control" placeholder="Search by Recipe Ingredients..">
+      </div>
+    </div>
+  </section>
+
+
+  <section class="recipes" id="recipes" data-scroll-index="3">
+    <div class="container">
+      <div class="row g-4">
+        <% recipes.forEach(recipe=>{ %>
+          <div class="col-xl-4 col-md-6">
+            <div class="inner">
+              <div class="card shadow mb-2">
+                <div class="img-box overflow-hidden">
+                  <img src="<%= recipe.img %>" alt="<%= recipe.title %>">
+                </div>
+                <div class="card-body">
+                  <a href="recipeViewed/<%= recipe.title %>"
+                    class="text-black text-decoration-none d-flex justify-content-between">
+                    <h5 class="card-title">
+                      <%= recipe.title %>
+                    </h5>
+                    <span>View Recipe <i class="fa-solid fa-arrow-right"></i></span>
+                  </a>
+                </div>
+              </div>
+              <%if(user.admin){%>
+                <div class="adminCntrls">
+                  <button type="button" class="btn btn-outline-dark" id="editRecipe" data-bs-toggle="modal"
+                    data-bs-target="#exampleModal">Edit</button>
+                  <button type="button" class="btn btn-outline-dark" id="deleteRecipe">Delete</button>
+                </div>
+
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                  aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Recipe</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                        <form id="recipeForm">
+                          <div>
+                            <label for="RecipeImg" class="col-form-label">Recipe's image :</label>
+                            <input type="file" name="RecipeImg" id="RecipeImg" class="w-100 rounded-2 mt-2"
+                              accept="image/*" required>
+                          </div>
+                          <div class="mb-3">
+                            <label for="RecipeName" class="col-form-label"></label>
+                            <input type="text" class="form-control" id="RecipeName" name="RecipeName"
+                              placeholder="Recipe for" value="<%=recipe.title%>" required>
+                          </div>
+                          <div class="mb-3 d-flex">
+                            <label for="Ingredients" class="col-form-label"></label>
+                            <input type="text" class="form-control me-2" id="Ingredients" name="Ingredients"
+                              placeholder="Ingredients">
+                            <button class="btn btn-outline-dark" id="addIngBtn" disabled>+</button>
+                          </div>
+                          <div class="ings mb-3 d-flex flex-wrap gap-2" id="ings">
+                            <%recipe.ingrediants.forEach(ingrediant=>{%>
+                              <div class="ing rounded-4 px-2 py-1">
+                                <%= ingrediant %>
+                              </div>
+                              <%})%>
+                          </div>
+                          <div class="mb-3">
+                            <label for="RecipeDescription" class="col-form-label"></label>
+                            <textarea class="form-control" id="RecipeDescription" placeholder="Description"
+                              name="RecipeDescription" required><%=recipe.description%></textarea>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="submit" class="btn btn-outline-dark" id="addRecBtn"
+                              data-bs-dismiss="modal">Save changes</button>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <%}%>
+            </div>
+          </div>
+          <% }) %>
+      </div>
+    </div>
+  </section>
+
+  <nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center">
+      <% if (currentPage> 1) { %>
+        <li class="page-item">
+          <a class="page-link" href="/recipes?page=<%= currentPage - 1 %>">Previous</a>
+        </li>
+        <% } else { %>
+          <li class="page-item disabled">
+            <span class="page-link">Previous</span>
+          </li>
+          <% } %>
+
+            <% for (let i=1; i <=totalPages; i++) { %>
+              <li class="page-item <%= currentPage === i ? 'active' : '' %>">
+                <a class="page-link" href="/recipes?page=<%= i %>">
+                  <%= i %>
+                </a>
+              </li>
+              <% } %>
+
+                <% if (currentPage < totalPages) { %>
+                  <li class="page-item">
+                    <a class="page-link" href="/recipes?page=<%= currentPage + 1 %>">Next</a>
+                  </li>
+                  <% } else { %>
+                    <li class="page-item disabled">
+                      <span class="page-link">Next</span>
+                    </li>
+                    <% } %>
+    </ul>
+  </nav>
+
+
+  <footer>
+    <div class="d-flex align-items-center justify-content-center text-secondary py-4 text-center bg-black">
+      <p class="mb-0">Copy Right 2025 © By <span class="fw-bold"><a href="#" class="text-decoration-none fs-5">MaMa's
+            Spaghetti</a></span> All Rights Reserved</p>
+    </div>
+  </footer>
+
+  <script src="/js/darkMood.js"></script>
+  <script src="/js/bootstrap.bundle.min.js"></script>
+  <script src="/js/recipes.js"></script>
+</body>
+
+</html>

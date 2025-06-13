@@ -1,0 +1,67 @@
+body{
+    background-color: #000;
+}
+.sign .container{
+    height: 100%;
+}
+.sign .container .row{
+    backdrop-filter: blur(9px);
+}
+.arrow{
+    color: white;
+    cursor: pointer;
+    transition: .5s;
+}
+.arrow:hover{
+    color: var(--main-c);
+    transition: .5s;
+}
+.changediv{
+    background: var(--main-c);
+    right: 0%;
+    transition: .5s;
+    z-index: 10;
+}
+.changediv h2{
+    font-size: 100px;
+}
+.changediv p{
+    color: var(--text-s);
+}
+
+.changediv button,
+.changediv p,
+.changediv h2{
+    transition: .5s;
+    opacity: 1;
+}
+.showPass{
+    color: var(--main-c);
+    margin-right: -30px;
+    cursor: pointer;
+}
+.forgetPass{
+    color: var(--main-c);
+}
+#signForm , #loginForm{
+    transition: all .5s;
+}
+#signForm {
+    opacity: 1;
+}
+#loginForm{
+    opacity: 0;
+}
+@media screen and (min-width:768px){
+.sign{
+    background-image:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(/images/tasty-pizza-near-ingredients.jpg) ;
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    height: 91.5vh;
+}
+#loginForm{
+    right: 0;
+    position: absolute;
+}
+}

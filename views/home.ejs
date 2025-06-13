@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/images/favicon.svg" type="image/x-icon">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playpen+Sans:wght@100..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Shadows+Into+Light&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="/css/all.min.css" />
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/style.css" />
+    <title>MaMa's Spaghetti'</title>
+</head>
+
+<body data-bs-spy="scroll" data-bs-target="#navId">
+    <nav class="navbar navbar-expand-lg text-black position-fixed w-100 z-2 bg1" id="navId">
+        <div class="container">
+            <a class="navbar-brand fw-bold text-uppercase" href="#"><img src="/images/logo.png" alt="logo"> MaMa's
+                Spaghetti</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-md-auto mb-2 mb-lg-0 align-items-center">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#services">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#recipes">Recipes</a>
+                    </li>
+                                                  <%if(user.admin){%>
+            <li class="nav-item">
+              <a class="nav-link" href="/adminDashboard">Admin</a>
+            </li>
+            <%}%>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <% if (user) { %>
+                            <a class="nav-link" href="profile"><img class="rounded-circle" src="<%=user.img%>" alt="user-img"></a>
+                            <% } else { %>
+                                <a class="nav-link" href="#sign">Sign Up</a>
+                                <% } %>
+                    </li>
+                    <li class="nav-item">
+                        <i class="fa-solid fa-moon fa-lg" id="darkModeToggle"></i>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="home vh-100" id="home" data-scroll-index="0">
+        <div class="container h-100 d-flex flex-column align-items-center justify-content-center text-center">
+            <h1 class="text-white mb-5">MaMa's Spaghetti</h1>
+            <p class="fs-4 mb-0">Just Like MaMa Used to Make</p>
+        </div>
+    </section>
+
+    <section class="about bg1" id="about" data-scroll-index="1">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-xl-4">
+                    <div class="inner ">
+                        <img src="/images/Family Baking Time.jpeg" alt="about-img" class="w-100 rounded-3">
+                    </div>
+                </div>
+                <div class="col-xl-8">
+                    <div class="inner">
+                        <h2 class="fs-1">About Us</h2>
+                        <p>At MaMa’s Spaghetti, we believe that the best meals come straight from the heart — and from
+                            MaMa’s kitchen. Our collection brings you comforting, home-cooked recipes just like the ones
+                            Mom used to make: rich in flavor, made with love, and always satisfying. Whether you're
+                            looking for a classic Sunday pasta, a cozy soup, or a nostalgic dessert, we've got you
+                            covered. Every recipe is crafted to bring back those warm family moments and help you create
+                            new ones around your own table.</p>
+                        <p>Our mission is simple — to make cooking at home feel less like a chore and more like coming
+                            home. You don’t need fancy ingredients or complicated steps here; just honest food, made the
+                            way MaMa did. Whether you're a beginner in the kitchen or a seasoned home cook, our recipes
+                            are designed to be approachable, forgiving, and full of heart.</p>
+                        <p>Food is more than nourishment — it’s a connection to our roots, our culture, and our
+                            families. At MaMa’s Recipes, we aim to preserve those traditions and share them with the
+                            world, one dish at a time. So grab a spoon, pour yourself some tea, and stay awhile. You're
+                            always welcome at MaMa’s table.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="services bg2" id="services" data-scroll-index="2">
+        <div class="top">
+            <h2>Services</h2>
+        </div>
+        <div class="container d-flex flex-column flex-xl-row gap-4">
+            <div class="search w-md-50 d-flex justify-content-center flex-column text-center">
+                <h3>Search</h3>
+                <p class="text-secondary">One of our website's standout features is the ability to search for recipes by
+                    a specific dish name or individual ingredients. Whether you’re craving something particular or just
+                    trying to use up what’s in your fridge, our smart search helps you discover delicious recipes that
+                    match exactly what you have on hand</p>
+                <button class="btn btn-outline-dark"><a href="recipes" class=" text-decoration-none">Search for a
+                        Recipe</a></button>
+            </div>
+            <img src="/images/hero-img.png" alt="mid-service" class="mid-service">
+            <div class="add w-md-50 d-flex justify-content-center flex-column text-center">
+                <h3>Add</h3>
+                <p class="text-secondary">Another great feature of our website is the ability to add your own recipes.
+                    Whether it’s a cherished family dish or a creative new idea, you can easily share it with others.
+                    Add ingredients, steps, and photos to build your recipe and inspire fellow food lovers in the
+                    community. Just sign in with your account and share your favorite MaMa's Recipes</p>
+                <button class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Add a
+                    Recipe</button>
+            </div>
+        </div>
+    </section>
+    <div class="modal fade service-modal" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
+        tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">New Recipe</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="recipeForm">
+                        <div>
+                            <label for="RecipeImg" class="col-form-label">Recipe's image :</label>
+                            <input type="file" name="RecipeImg" id="RecipeImg" class="w-100 rounded-2 mt-2"
+                                accept="image/*" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="RecipeName" class="col-form-label"></label>
+                            <input type="text" class="form-control" id="RecipeName" name="RecipeName"
+                                placeholder="Recipe for" required>
+                        </div>
+                        <div class="mb-3 d-flex">
+                            <label for="Ingredients" class="col-form-label"></label>
+                            <input type="text" class="form-control me-2" id="Ingredients" name="Ingredients"
+                                placeholder="Ingredients">
+                            <button class="btn btn-outline-dark" id="addIngBtn" disabled>+</button>
+                        </div>
+                        <div class="ings mb-3 d-flex flex-wrap" id="ings">
+
+                        </div>
+                        <div class="mb-3">
+                            <label for="RecipeDescription" class="col-form-label"></label>
+                            <textarea class="form-control" id="RecipeDescription" placeholder="Description"
+                                name="RecipeDescription" required></textarea>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Cancel</button>
+                            <button type="submit" class="btn btn-outline-dark" id="addRecBtn" data-bs-dismiss="modal"
+                                disabled>Add Recipe</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="toast-container position-fixed bottom-0 end-0 p-3 recipe-toast">
+        <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+                <strong class="me-auto">MaMa's Kitchen</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body">
+                Recipe Added Successfully
+            </div>
+        </div>
+    </div>
+
+    <section class="sign_reminder text-center" id="sign" data-scroll-index="5">
+        <% if (user) { %>
+            <h3 class="fs-1">Welcome, <%= user.name %>!</h3>
+            <a href="profile"><img class="rounded-circle border border-5 border-light" src="<%=user.img%>" alt="user-img"></a>
+            <% } else { %>
+                <h3 class="fs-1">Don't Have an Account yet!</h3>
+                <a href="signLogin" class="btn btn-outline-dark">Sign-up</a>
+                <% } %>
+    </section>
+
+    <section class="recipes bg1" id="recipes" data-scroll-index="3">
+        <div class="container">
+            <div class="top">
+                <h2>Recipes</h2>
+            </div>
+            <div class="row g-4">
+                <% for(var i=0;i<2;i++){ %>
+                <div class="col-xl-4 col-md-6">
+                    <div class="inner">
+                        <div class="card shadow">
+                            <div class="img-box overflow-hidden">
+                                <img src="<%= recipes[i].img %>" alt="<%= recipes[i].title %>">
+                            </div>
+                            <div class="card-body">
+                                <a href="recipeViewed/<%=recipes[i].title%>"
+                                    class="text-black text-decoration-none d-flex justify-content-between">
+                                    <h5 class="card-title"><%= recipes[i].title %></h5><span>View Recipe <i
+                                            class="fa-solid fa-arrow-right"></i></span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <% } %>
+                <div class="col-xl-4 order-md-first order-xl-last">
+                    <div class="inner">
+                        <div class="card shadow">
+                            <div class="img-box overflow-hidden">
+                                <img src="/images/download.jpeg" alt="">
+                            </div>
+                            <div class="card-body">
+                                <a href="recipes"
+                                    class="text-black text-decoration-none d-flex justify-content-between">
+                                    <h5 class="card-title">MaMa's Recipes</h5><span>View More Recipes <i
+                                            class="fa-solid fa-arrow-right"></i></span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact bg2" id="contact" data-scroll-index="4">
+        <div class="container">
+            <div class="top">
+                <h2>Contact Us.</h2>
+            </div>
+            <div class="row g-4 text-center">
+                <div class="col-md-4">
+                    <div class="inner d-flex flex-column gap-2 align-items-center justify-content-center">
+                        <div class="icon d-flex align-items-center justify-content-center bg2">
+                            <i class="fa-solid fa-location-arrow fs-4"></i>
+                        </div>
+                        <h6 class="fw-bold">Address</h6>
+                        <p class="text-secondary">6834 Hollywood Blvd - Los Angeles CA</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="inner d-flex flex-column gap-2 align-items-center justify-content-center">
+                        <div class="icon d-flex align-items-center justify-content-center bg2">
+                            <i class="fa-solid fa-envelope fs-4"></i>
+                        </div>
+                        <h6 class="fw-bold">Email</h6>
+                        <p class="text-secondary">Support@website.com</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="inner d-flex flex-column gap-2 align-items-center justify-content-center">
+                        <div class="icon d-flex align-items-center justify-content-center bg2">
+                            <i class="fa-solid fa-phone fs-4"></i>
+                        </div>
+                        <h6 class="fw-bold">Phone</h6>
+                        <p class="text-secondary">+20 012 4567 8910</p>
+                    </div>
+                </div>
+            </div>
+            <form>
+                <div class="row gx-4 text-center">
+                    <div class="col-md-6">
+                        <div class="inner">
+                            <label for="Name" class="form-label"></label>
+                            <input type="text" placeholder="Name" id="Name"
+                                class="Name form-control-sm border-0 py-2 w-100" required>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="inner">
+                            <label for="email" class="form-label"></label>
+                            <input type="text" placeholder="Email" id="email"
+                                class="email form-control-sm border-0 py-2 w-100" required>
+                        </div>
+                    </div>
+                    <div class="col-12 mb-3">
+                        <div class="inner">
+                            <label for="message" class="form-label"></label>
+                            <textarea class="message form-control-sm border-0 py-2 w-100" id="message"
+                                placeholder="Message" rows="7" required></textarea>
+                        </div>
+                    </div>
+                    <button class="btn btn-outline-dark align-self-start px-5 py-2">Submit</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="d-flex align-items-center justify-content-center text-secondary py-4 text-center bg-black">
+            <p class="mb-0">Copy Right 2025 © By <span class="fw-bold"><a href="#"
+                        class="text-decoration-none fs-5">MaMa's Spaghetti</a></span> All Rights Reserved</p>
+        </div>
+    </footer>
+
+    <script src="/js/darkMood.js"></script>
+    <script src="/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/script.js"></script>
+</body>
+
+</html>

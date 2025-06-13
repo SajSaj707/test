@@ -1,0 +1,30 @@
+.forget{
+    height: 100vh;
+}
+body{
+    background: #000;
+}
+.forget .container{
+    height: 100%;
+}
+.forget .container .inner{
+    backdrop-filter: blur(9px);
+    background: rgba(255, 255, 255, 0.2);
+}
+.showPass{
+    color: var(--main-c);
+    margin-right: -30px;
+    cursor: pointer;
+}
+@media screen and (min-width:768px){
+.forget{
+    background-image:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(/images/tasty-pizza-near-ingredients.jpg) ;
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    height: 91.5vh;
+    }
+.forget .container{
+    width: 50%;
+    }
+}

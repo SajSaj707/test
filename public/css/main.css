@@ -1,0 +1,187 @@
+:root{
+    --bg-1:#fff;
+    --bg-2:#F7F7F7;
+    --bgi-c:#d65d00c4;
+    --main-c:#D65D00;
+    --sec-c:#a82d00;
+    --text-c: #000;
+    --text-s: #fff;
+    --selection-c:#fff;
+}
+[data-bs-theme=dark]{
+    --text-c: #ffffff;
+    --text-s: #000;
+    --main-c:var(--sec-c);
+    --selection-c:black;
+    --bg-2:#1C1B17;
+    --bg-1:#100C0B;
+    --bgi-c:#a82d00c4;
+    --bs-body-bg:#171614;
+    --bs-box-shadow: 0 0.2rem 1rem #282723;
+}
+
+
+.card .img-box{
+    height: 209px;
+}
+.card .img-box img{
+    transition: .5s;
+    object-fit: cover;
+    object-position: center;
+    width: 100%;
+    height: 100%;
+}
+.card .img-box img:hover{
+    scale: 1.2;
+    transition: .5s;
+}
+.card span{
+    color: var(--main-c);
+}
+.card h5{
+    transition: .5s;
+    color: var(--text-c);
+}
+.card h5:hover{
+    transition: .5s;
+    color: var(--main-c);
+}
+
+.modal-header{
+    background-color: var(--main-c);
+}
+
+.btn.btn-outline-dark a,.btn.btn-outline-dark{
+    color: var(--text-c);
+    --bs-btn-border-color:var(--text-c);
+}
+.btn.btn-outline-dark:hover ,.btn.btn-outline-dark:hover a{
+    --bs-btn-hover-bg:var(--main-c); 
+    color: var(--text-s);
+}
+
+:root, [data-bs-theme=light],[data-bs-theme=dark]{
+    --bs-primary: var(--main-c);
+    --bs-primary-rgb:var(--main-c);
+    --bs-primary-border-subtle:var(--main-c);
+}
+
+.form-control:focus {
+    color: var(--bs-body-color);
+    background-color: var(--bs-body-bg);
+    border:0;
+    outline: 0;
+    box-shadow: 0 0 0 .25rem var(--main-c);
+}
+::selection {
+    background: var(--main-c);
+    color: var(--selection-c);
+}
+.bg1{
+    background-color: var(--bg-1);
+}
+.bg2{
+    background-color: var(--bg-2);
+}
+body{
+    color: var(--text-c);
+    font-family: "Playpen Sans", cursive;
+}
+h1,h2,.navbar-brand,footer span{
+    font-family: "Shadows Into Light", cursive;
+    font-weight: 900;
+}
+.top{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 60px;
+}
+.top h2{
+    font-size: 40px;
+    position: relative;
+    z-index: 1;
+}
+.top h2::after{
+    content: "";
+    position: absolute;
+    background-image: url(/images/graffiti_colored.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 50px;
+    bottom: -50%;
+    left: 25%;
+    z-index: -1;
+}
+[data-bs-theme=dark] .top h2::after{
+    background-image: url(/images/graffiti_colored-sec.png);
+}
+section{
+    padding: 100px 0;
+}
+
+
+
+.navbar{
+    background: var(--bg-1);
+}
+.navbar-brand,.navbar i{
+    color: var(--text-c);
+    cursor: pointer;
+}
+.navbar-brand img{
+    width: 30px;
+}
+.navbar .nav-link{
+    color: var(--text-c);
+    margin: 0 12px;
+    font-size: 14px;
+}
+.navbar .nav-link img{
+    width: 35px;
+    height: 35px;
+    object-fit: cover;
+    object-position: center;
+}
+.navbar .nav-link.active{
+    color: var(--main-c);
+}
+.navbar .nav-link{
+    position: relative;
+}
+.navbar .nav-link::after{
+    position: absolute;
+    content: "";
+    width: 0%;
+    height: 2px;
+    background-color: var(--main-c);
+    bottom: 0;
+    left: 0;
+    transition: .5s;
+}
+.navbar .nav-link.active::after{
+    width: 100%;
+    transition: .5s;
+}
+.navbar .nav-item.active .prf-nav{
+    border: 2px solid var(--main-c);
+}
+
+
+footer a{
+    color: var(--main-c);
+}
+
+
+.active>.page-link, .page-link.active {
+    color: var(--text-s);
+    background-color: var(--main-c);
+    border-color: var(--main-c);
+}
+.page-link {
+    color: var(--main-c);
+}
+.page-link:hover {
+    color: var(--text-c);
+}

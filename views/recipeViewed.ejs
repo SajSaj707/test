@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/images/favicon.svg" type="image/x-icon">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playpen+Sans:wght@100..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Shadows+Into+Light&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="/css/all.min.css" />
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/recipeViewed.css" />
+    <title>MaMa's Spaghetti'</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg text-black position-fixed w-100 z-2 " id="navId">
+        <div class="container">
+            <a class="navbar-brand fw-bold text-uppercase" href="#"><img src="/images/logo.png" alt="logo"> MaMa's
+                Spaghetti</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-md-auto mb-2 mb-lg-0 align-items-center">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="/#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/#services">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/recipes">Recipes</a>
+                    </li>
+                                                  <%if(user.admin){%>
+            <li class="nav-item">
+              <a class="nav-link" href="/adminDashboard">Admin</a>
+            </li>
+            <%}%>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/#contact">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <% if (user) { %>
+                            <a class="nav-link" href="/profile">
+                                <img class="prf-nav rounded-circle" src="<%=user.img%>" alt="user-img">
+                            </a>
+                            <% } else { %>
+                                <a class="nav-link" href="/signLogin">Sign Up</a>
+                                <% } %>
+                    </li>
+                    <li class="nav-item">
+                        <i class="fa-solid fa-moon fa-lg" id="darkModeToggle"></i>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="recipe">
+        <div class="top">
+            <h2>Recipe</h2>
+        </div>
+        <div class="container">
+            <div class="row g-3">
+                <div class="col-md-8 overflow-hidden h-100">
+                    <div class="img-box h-100 shadow">
+                        <img src="<%= recipe.img %>" alt="" class="w-100 h-100">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="row g-2">
+                        <div class="col-12">
+                            <div class="p-5 shadow">
+                                <p><span>Name : </span>
+                                    <%= recipe.title %>
+                                </p>
+                                <p><span>Ingrediants : </span></p>
+                                <div class="ingrediants d-flex flex-wrap gap-2">
+                                    <%recipe.ingrediants.forEach(ingrediant=>{ %>
+                                        <div class="ing rounded-4 px-2 py-1">
+                                            <%= ingrediant %>
+                                        </div>
+                                        <% });%>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="p-5 shadow d-flex align-items-center flex-column">
+                                <div class="desc test-center">
+                                    <h4>Description</h4>
+                                </div>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit saepe nesciunt ex ipsa
+                                    sed, consequatur quo odio sequi voluptatem iusto.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="d-flex align-items-center justify-content-center text-secondary py-4 text-center bg-black">
+            <p class="mb-0">Copy Right 2025 © By <span class="fw-bold"><a href="#"
+                        class="text-decoration-none fs-5">MaMa's
+                        Spaghetti</a></span> All Rights Reserved</p>
+        </div>
+    </footer>
+
+    <script src="/js/darkMood.js"></script>
+    <script src="/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/recipes.js"></script>
+</body>
+
+</html>

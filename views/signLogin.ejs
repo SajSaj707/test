@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/images/favicon.svg" type="image/x-icon">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playpen+Sans:wght@100..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Shadows+Into+Light&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="/css/all.min.css" />
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/sign-style.css" />
+    <title>MaMa's Spaghetti'</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg text-black position-fixed w-100 z-2 " id="navId">
+        <div class="container">
+            <a class="navbar-brand fw-bold text-uppercase" href="#"><img src="/images/logo.png" alt="logo"> MaMa's
+                Spaghetti</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-md-auto mb-2 mb-lg-0 align-items-center">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="/#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/#services">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/recipes">Recipes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/#contact">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <% if (user) { %>
+                            <a class="nav-link active" href="profile"><img class="prf-nav rounded-circle"
+                                    src="<%=user.img%>" alt="user-img"></a>
+                            <% } else { %>
+                                <a class="nav-link active" href="signLogin">Sign Up</a>
+                                <% } %>
+                    </li>
+                    <li class="nav-item">
+                        <i class="fa-solid fa-moon fa-lg" id="darkModeToggle"></i>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="sign">
+        <div class="container">
+            <div class="row h-100 rounded-3 overflow-hidden position-relative">
+                <div class="col-lg-4 h-100" id="signForm">
+
+                    <div class="signup d-flex flex-column align-items-center justify-content-center h-100">
+                        <div class="top">
+                            <h2 class="text-white">
+                                Sign Up
+                            </h2>
+                        </div>
+
+                        <form action="" class="w-75 text-center">
+                            <label for="SignUpUsername"></label>
+                            <input type="text" name="SignUpUsername" class="form-control"
+                                placeholder="Enter Your User Name" id="signUser">
+                            <p id="userNameAlert"></p>
+
+                            <label for="email"></label>
+                            <input type="email" name="email" class="form-control" placeholder="Enter Your Email"
+                                id="signEmail">
+                            <p id="emailAlert"></p>
+
+                            <label for="SignUpPassword"></label>
+                            <div class="SRePInp position-relative">
+                            <input type="password" name="SignUpPassword" class="form-control"
+                                placeholder="Enter Your Password" id="signPass">
+                            <i class="showPass fa-solid fa-eye fa-lg position-absolute end-0 top-50 bottom-50" data-target="signPass"></i>
+                            </div>
+                            <p id="passwordAlert"></p>
+
+                            <label for="repassword"></label>
+                            <div class="SRePInp position-relative">
+                                <input type="password" name="repassword" class="form-control"
+                                    placeholder="Re-Enter Your Password" id="signRePass">
+                                <i class="showPass fa-solid fa-eye fa-lg position-absolute end-0 top-50 bottom-50" data-target="signRePass"></i>
+                            </div>
+                            <p id="rePasswordAlert"></p>
+
+                            <div class="cntrls d-flex justify-content-between justify-content-lg-center align-items-center mt-3">
+                            <button class="btn btn-outline-light " type="button" id="signBtn">
+                                Finish!
+                            </button>
+                            <i class="fa-solid fa-arrow-right fa-xl arrow d-lg-none d-block switch"></i>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+
+                <div class="col-lg-4 h-100 d-none" id="loginForm">
+
+                    <div class="signup d-flex flex-column align-items-center justify-content-center h-100">
+                        <div class="top">
+                            <h2 class="text-white">
+                                Login
+                            </h2>
+                        </div>
+
+                        <form action="" class="w-75 text-center">
+                            <label for="loginUsername"></label>
+                            <input type="text" name="loginUsername" class="form-control"
+                                placeholder="Enter Your User Name" id="loginUser">
+                            <p id="loginUserNameAlert"></p>
+
+                            <label for="loginPassword"></label>
+                            <div class="lPInp position-relative">
+                            <input type="password" name="loginPassword" class="form-control"
+                                placeholder="Enter Your Password" id="loginPass">
+                            <i class="showPass fa-solid fa-eye fa-lg position-absolute end-0 top-50 bottom-50" data-target="signPass"></i>
+                            </div>
+                            <p id="loginPasswordAlert"></p>
+                            <a href="forgotPass" class="forgetPass">Forgot your password?</a>
+                            
+                            <div class="cntrls d-flex justify-content-between justify-content-lg-center align-items-center mt-3">
+                            <button class="btn btn-outline-light " type="button" id="signBtn">
+                                Finish!
+                            </button>
+                            <i class="fa-solid fa-arrow-right fa-xl arrow d-lg-none d-block switch"></i>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+
+                <div class="col-lg-8 changediv h-100 d-none d-lg-block position-absolute">
+                    <div
+                        class="change d-flex flex-column h-100 align-items-center justify-content-center gap-3 text-center">
+                        <h2>Welcome Back!</h2>
+                        <p class="pb-0 mb-0">We're glad to see you again. Log in to your MaMa’s Spaghetti account</p>
+                        <button class="btn btn-outline-dark switch">Login</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="d-flex align-items-center justify-content-center text-secondary py-4 text-center bg-black">
+            <p class="mb-0">Copy Right 2025 © By <span class="fw-bold"><a href="#"
+                        class="text-decoration-none fs-5">MaMa's
+                        Spaghetti</a></span> All Rights Reserved</p>
+        </div>
+    </footer>
+
+    <script src="/js/darkMood.js"></script>
+    <script src="/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/sign-script.js"></script>
+</body>
+
+</html>

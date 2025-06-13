@@ -1,0 +1,12 @@
+@media (width> 768px) {
+  .row{
+    height: 600px;
+  }
+}
+.row img{
+    object-fit: cover;
+    object-position: center;
+}
+.ing{
+    background-color: var(--main-c);
+}

@@ -1,0 +1,22 @@
+.recipesTop{
+    background-image: linear-gradient(var(--bgi-c)), url(/images/Pngtree.jpeg);
+    background-position: center;
+    background-size: cover;
+    height: 50vh;
+}
+.recipesTop h1{
+    font-size: 100px;
+}
+.search{
+    padding-bottom: 30px;
+}
+.card .img-box{
+    height: 500px;
+}
+.info .btns .btn:hover{
+    background: var(--main-c);
+    color: #fff;
+}
+.ing{
+    background-color: var(--main-c);
+}

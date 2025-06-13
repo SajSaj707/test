@@ -1,0 +1,51 @@
+.welcome{
+    background-image: linear-gradient(var(--bgi-c)), url(/images/10351122_4452317.jpg);
+    background-position: center;
+    background-size: cover;
+    height: 50vh;
+}
+.welcome h1{
+    font-size: 100px;
+}
+.welcome h1 span{
+    color: azure;
+}
+
+
+
+
+.icon{
+    width: 50px;
+}
+.user-prf .container{
+    background: var(--main-c);
+}
+.info .img-box{
+    width: 100%;
+    height: 270px;
+}
+.cntrls i{
+    padding: 1px 0;
+}
+
+.card .img-box{
+    height: 209px;
+}
+.card .img-box img{
+    transition: .5s;
+    object-fit: cover;
+    object-position: center;
+    width: 100%;
+    height: 100%;
+}
+.card .img-box img:hover{
+    scale: 1.2;
+    transition: .5s;
+}
+.card span{
+    color: var(--main-c);
+}
+
+.favorites .card .img-box,.addedR .card .img-box{
+    height: 500px;
+}
