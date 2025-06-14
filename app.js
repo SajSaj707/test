@@ -3,6 +3,8 @@ const mongoose = require("mongoose");
 const { user: User } = require("./models/user");
 const { Recipe: Recipe } = require("./models/recipe");
 const app = express();
+const errorHandler = require('./middleware/errorHandler');
+
 
 mongoose
   .connect(
@@ -454,7 +456,7 @@ app.post("/deleteUser", async (req, res) => {
 });
 
 
-
+app.use(errorHandler);
 
 app.listen(3000, () =>
   console.log("Server running on http://localhost:3000")
