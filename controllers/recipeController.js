@@ -5,7 +5,7 @@ const { Recipe } = require('../models/recipe');
 const mongoose = require('mongoose');
 
 
-//delte
+//delete
 exports.deleteRecipe = async (req, res) => {
   try {
     const recipeId = req.params.id;
@@ -36,6 +36,15 @@ exports.editRecipe = async (req, res) => {
     const recipeId = req.params.id;
 
     const ingredientsArray = Ingredients.split(',').map(item => item.trim());
+    if (!RecipeName || !Ingredients || !RecipeDescription) {
+      return res.status(400).send('All fields are required.');
+    }
+
+     const existing = await Recipe.findOne({ title: RecipeName });
+    if (existing && existing._id.toString() !== recipeId) {
+      return res.status(400).send('Another recipe with this title already exists.');
+    }
+
 
     const updatedRecipe = await Recipe.findByIdAndUpdate(
       recipeId,
@@ -69,9 +78,17 @@ exports.editRecipe = async (req, res) => {
 //create
 exports.createRecipe = async (req, res) => {
   const file = req.file;
-  if (!file) return res.status(400).send('No image uploaded');
-
   const imageUrl = `${req.protocol}://${req.get('host')}/public/uploads/${file.filename}`;
+  
+  if (!file || !title || !description || !ingredients || !userId) {
+    return res.status(400).send('All fields (image, title, description, ingredients, userId) are required.');
+  }
+
+  const existing = await Recipe.findOne({ title });
+  if (existing) {
+    return res.status(400).send('Recipe title already exists.');
+  }
+
 
   let recipe = new Recipe({
     image: imageUrl,
@@ -81,9 +98,13 @@ exports.createRecipe = async (req, res) => {
     createdBy: req.body.userId
   });
 
-  recipe = await recipe.save();
-  if (!recipe) return res.status(500).send('Recipe could not be created');
-  res.send(recipe);
+  try {
+    const saved = await recipe.save();
+    if (!saved) throw new Error();
+    res.send(saved);
+  } catch (err) {
+    res.status(500).send('Recipe could not be created.');
+  }
 };
 
 

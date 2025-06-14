@@ -18,7 +18,7 @@ exports.changePassword = async (req, res) => {
 };
 
 
-//signLogin
+//Login
 exports.loginUser = async (req, res) => {
   const { loginPassword, loginUsername } = req.body;
   if (loginPassword === fakeUser.password && loginUsername === fakeUser.name) {
@@ -30,13 +30,47 @@ exports.loginUser = async (req, res) => {
 
 //create 
 exports.signUser = (req, res) => {
-  const { SignUpUsername,SignUpPassword, email } = req.body;
-  if (SignUpUsername === fakeUser.name && SignUpPassword === fakeUser.password && email === fakeUser.email) {
-    res.redirect("/profile");
+  const { SignUpUsername, SignUpPassword, email } = req.body;
+
+  if (!SignUpUsername || !SignUpPassword || !email) {
+    return res.render("signLogin", {
+      user: null,
+      error: "All fields are required.",
+    });
+  }
+
+
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(email)) {
+    return res.render("signLogin", {
+      user: null,
+      error: "Invalid email format.",
+    });
+  }
+
+
+  const specialCharRegex = /[!@#$%^&*(),.?":{}|<>]/;
+  if (SignUpPassword.length < 8 || !specialCharRegex.test(SignUpPassword)) {
+    return res.render("signLogin", {
+      user: null,
+      error: "Password must be at least 8 characters and include a special character.",
+    });
+  }
+
+  if (
+    SignUpUsername === fakeUser.name &&
+    SignUpPassword === fakeUser.password &&
+    email === fakeUser.email
+  ) {
+    return res.redirect("/profile");
   } else {
-    res.render("signLogin", { user: null, error: "Invalid credentials" });
+    return res.render("signLogin", {
+      user: null,
+      error: "Invalid credentials",
+    });
   }
 };
+
 
 //adminDashboard
 exports.editUser = async (req, res) => {
@@ -176,7 +210,7 @@ exports.getAllUsers = async (req, res) => {
   }
 };
 
-// Count users 
+// Count users (admin)
 exports.getUserCount = async (req, res) => {
   try {
     const count = await User.countDocuments();
